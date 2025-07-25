@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center><h2 style="background-color: aqua;"> Guess the Number Game</h2></center>
+    <center> <input type="number" id="mainInput" placeholder="Enter your guess"></center><br>
+     <center><button onclick="playGame()" style="background-color: red;">Guess</button></center>
+     <center><p id="feedback"></p></center>
+     <center><p id="attempts"></p></center>
+ 
+     <script>
+         let target = Math.floor(Math.random() * 100) + 1;
+         let count = 0;
+ 
+         function playGame() {
+             let guess = parseInt(document.getElementById("mainInput").value);
+             count++;
+ 
+             if (guess < target) {
+                 document.getElementById("feedback").innerText = "Too low!";
+             } else if (guess > target) {
+                 document.getElementById("feedback").innerText = "Too high!";
+             } else if (guess === target) {
+                 document.getElementById("feedback").innerText = "Correct!";
+                 document.getElementById("attempts").innerText = "You guessed it in " + count + " attempts.";
+             } else {
+                 document.getElementById("feedback").innerText = "Please enter a valid number.";
+             }
+         }
+     </script>
+ </body>
+ </html>
+ 
