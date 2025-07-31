@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration form validation</title>
+</head>
+<center><body style="background-color: whitesmoke">
+    
+    <h2>registration form</h2>
+    <hr style="background-color: black; height: 3px;"><BR></BR>
+
+    <form id="registrationform" onsubmit="validateform()"></form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required style="background-color: yellow;">
+    <div id="nameerror" class="error"></div>
+    <br><br>
+
+    <label for="email">E-mail:</label>
+    <input type="text" id="email" name="email" required style="background-color: yellow;">
+    <div id="emailerror" class="error"></div>
+    <br><br>
+
+    <label for="password">password:</label>
+    <input type="text" id="password" name="password" required style="background-color: yellow;">
+    <div id="passworderror" class="error"></div>
+    <br><br>
+
+    <label for="phone">phone:</label>
+    <input type="text" id="phone" name="phone" required style="background-color: yellow;">
+    <div id="phoneerror" class="error"></div>
+    <br><br>
+
+    <button type="submit" style="background-color: gold;">submit</button>
+    <script src="./script.js"></script>
+</body></center>
+</html>
