@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title style="background-color: blue;">Mini Text Analyzer</title>
+</head>
+<body style="background-color: gold;">
+  <center><h2>Mini Text Analyzer</h2></center>
+  <center><textarea id="paragraphInput" cols="60" rows="6" placeholder= "Enter a paragraph" style="border: 10px;background-color: gold;"></textarea></center><br/>
+  <center><button id="analyzeButton" style="background-color:yellow; margin: 20px;" >Analyze</button></center>
+  <center><pre id="output" style="margin: 2px; "></pre></center>
+
+  <script>
+    document.getElementById("analyzeButton").addEventListener("click", analyzeText);
+
+    function analyzeText() {
+      const text = document.getElementById("paragraphInput").value;
+      const totalChars = text.length;
+      const words = text.match(/\p{L}+/gu) || [];
+      const totalWords = words.length;
+
+      
+      const totalSentences = (text.match(/[.!?]/g) || []).length;
+
+      
+      const lowerWords = words.map(w => w.toLowerCase());
+      const uniqueSet = new Set(lowerWords);
+      const uniqueWords = Array.from(uniqueSet);
+
+      
+      const freq = {};
+      lowerWords.forEach(w => {
+        freq[w] = (freq[w] || 0) + 1;
+      });
+      const sortedFreq = Object.entries(freq)
+        .sort((a, b) => b[1] - a[1]);
+
+      
+      let output = '';
+      output += `Total characters: ${totalChars}\n`;
+      output += `Total words: ${totalWords}\n`;
+      output += `Total sentences: ${totalSentences}\n`;
+      output += `Unique words (${uniqueWords.length}): ${uniqueWords.join(', ')}\n`;
+      output += `\nWord frequencies (top):\n`;
+      sortedFreq.forEach(([word, count]) => {
+        output += `${word}: ${count}\n`;
+      });
+
+      document.getElementById("output").textContent = output;
+    }
+  </script>
+</body>
+</html>
