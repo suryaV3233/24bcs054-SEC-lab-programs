@@ -17,9 +17,7 @@
             const words=text.match(/\b\w+\b/g) || [];
             const totalWords=words.length;
             const totalSentences=(text.match(/[.!?]/g)|| []).length;
-            //...-rest operator 
-            //forEach-- iteration of objects
-            const uniqueWords=[...new Set(words.map((w) => w.toLowerCase()))];//array of objects
+            const uniqueWords=[...new Set(words.map((w) => w.toLowerCase()))];
             const freq={};
             words.forEach((word) => {
                 const w=word.toLowerCase();
@@ -37,4 +35,5 @@
         }        
     </script>
 </body>
+
 </html>
