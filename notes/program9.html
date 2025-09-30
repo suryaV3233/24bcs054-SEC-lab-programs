@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      
+        .slider{
+            margin: auto;
+        }
+        .slider img{
+            width: auto;
+            height: auto;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>images-slider</title>
+</head>
+<body>
+   <div class="slider">
+    
+    <img src="image1.webp "alt="" id="display-image">
+    <br><br>
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+   </div> 
+   <script>
+ let images = ["image1.webp","image2.jfif","image3.webp"]
+ let currentIndex = 0;
+ let displayImage = document.getElementById('display-image');
+ let previousbutton = document.getElementById('previous');
+ let nextbutton = document.getElementById('next');
+
+ nextbutton.addEventListener('click',()=>{
+    currentIndex = (currentIndex + 1) % images.length;
+    displayImage.src = images[currentIndex];
+ })
+
+ previousbutton.addEventListener('click',()=>{
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    displayImage.src = images[currentIndex];
+    });
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        displayImage.src = images[currentIndex];
+    }, 2000);
+   </script>
+</body>
+</html>
